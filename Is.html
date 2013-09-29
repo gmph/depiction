@@ -1,0 +1,149 @@
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=100" />
+<![endif]-->
+<html id="top">
+
+<head>
+
+<title>Depiction | Personal Status Page</title>
+<meta name="author" content="Graham Macphee" />
+<meta name="description" content="Depiction is the simplest way to share what you are thinking right now - it is the no clutter personal status page." />
+<meta name="keywords" content="Depiction is the simplest way to share what you are thinking right now - it is the no clutter personal status page." />
+<meta charset="utf-8">
+<meta property="og:title" content="Graham Macphee">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://depiction.co">
+<meta property="og:site_name" content="Depiction | Personal Status Page">
+<meta property="og:description" content="Depiction is the simplest way to share what you are thinking right now - it is the no clutter personal status page.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="http://static.tumblr.com/ajv5ctq/0u3ma7ebh/icon.png">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=100" />
+<style type="text/css">
+</style>
+<![endif]-->
+
+<style type="text/css">
+
+* {
+	transition: .8s all;
+	-o-transition: .8s all;
+	-moz-transition: .8s all;
+	-webkit-transition: .8s all;
+}
+
+#tumblr_controls {
+	display:none;
+}
+
+body {
+	width:100%;
+	margin:0;
+	padding:0 0 20px 0;
+	background:#333;
+	color:#fff;
+}
+
+article {
+	width: 300px;
+    height: 250px;
+    position: absolute;
+    left: 50%;
+  	top: 50%; 
+  	margin-left: -150px;
+   	margin-top: -125px;
+   	font-family:'Open Sans', sans-serif;
+   	text-shadow: 0 2px 0px rgba(0,0,0,.08);
+   	line-height:46px;
+   	opacity:0;
+   	color:#fff;
+}
+
+a {
+   	text-decoration:none !important;
+   	color:#fff;
+}
+
+h1 {
+	margin:-5px 0;
+	padding:0;
+	font-weight: 300;
+	font-size:18px;
+	text-transform:uppercase;
+	color:rgba(255,255,255,.7) !important;
+}
+
+h2 {
+	margin:0;
+	padding:0;
+	font-weight:400;
+	font-style: normal;
+	font-size:36px;
+	color:#fff !important;
+}
+
+::selection {
+    background: rgba(0,0,0,0.1);
+	}
+::-moz-selection {
+	background: rgba(0,0,0,0.1);
+	}
+
+
+</style>
+
+</head>
+
+<body>
+
+<article class="fadeIn">
+
+<a class="url">
+
+<h1><span class="atname"></span> is thinking...</h1>
+
+<h2 class="message" id="message">
+Loading...
+</h2>
+
+</a>
+
+</article>
+ 
+<script id="displaycode" type="text/javascript">
+
+	var userid = document.URL.split('/')[3];
+
+	var usermessage;
+
+	$.post("Display.php",
+	  	{
+			'id':userid,
+	  	},
+	  	function(data,status){
+	  		if (data['error'] == true) {
+	  			$('h1 span.atname').text("Depiction.co");
+	  			$('h2.message#message').text("Oops, this page doesn't exist.");
+	  			$('article').css('opacity','1');
+	  			$('a.url').attr("href", "http://www.depiction.co");
+	  		}
+	  		else {
+		  		usermessage = data.message;
+		  		console.log(data, usermessage);
+		  		$('h2.message#message').text(usermessage);
+		  		$('h1 span.atname').text(data.atname);
+		  		$('a.url').attr("href", "http://www.twitter.com/" + data.atname);
+		  		$('article').css('opacity','1');
+		  		$('body').css('background',data.colour);
+		  		document.title = 'Depiction | ' + data.atname;
+	  		}
+		}, 'json');
+
+	console.log(usermessage);
+
+</script>
+
+</body>
+
+</html>
