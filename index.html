@@ -1,0 +1,374 @@
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=100" />
+<![endif]-->
+<html id="top">
+
+<head>
+
+<title>Depiction | Personal Status Page</title>
+<meta name="author" content="Graham Macphee" />
+<meta name="description" content="Depiction is the simplest way to share what you are thinking right now - it is the no clutter personal status page." />
+<meta name="keywords" content="Depiction is the simplest way to share what you are thinking right now - it is the no clutter personal status page." />
+<meta charset="utf-8">
+<meta property="og:title" content="Graham Macphee">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://depiction.co">
+<meta property="og:site_name" content="Depiction | Personal Status Page">
+<meta property="og:description" content="Depiction is the simplest way to share what you are thinking right now - it is the no clutter personal status page.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="http://static.tumblr.com/ajv5ctq/0u3ma7ebh/icon.png">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<style type="text/css">
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+
+	transition: .2s all;
+	-webkit-transition: .2s all;
+	-moz-transition: .2s all;
+	-o-transition: .2s all;
+}
+
+html, body {
+	background:#f8f8f8;
+}
+
+div.box {
+	width:100%;
+	max-width:500px;
+	margin:80px auto 80px auto;
+	padding: 20px 0 42px 0;
+	background:#fff;
+	border-radius:3px;
+	box-shadow: 0 1px 5px rgba(0,0,0,.1);
+}
+
+header {
+	width:80%;
+	margin:0 auto;
+	text-align:center !important;
+}
+
+header h1 {
+	font-family:'Helvetica', sans-serif;
+	font-size:32px;
+	font-weight:300;
+}
+
+header h2 {
+	font-family:'Helvetica', sans-serif;
+	font-size:16px;
+	font-weight:300;
+	text-transform:uppercase;
+	margin:-15px 0 12px 0;
+	opacity:.9;
+}
+
+header h2 span.divider {
+	color:#ccc;
+	position:relative;
+	top:-2px;
+	left:0;
+	font-weight:300;
+}
+
+a {
+	color:#468ac9;
+	text-decoration:none;
+	font-weight:500;
+	position:static !important;
+}
+
+a.user {
+	color:#666;
+}
+
+a.login {
+	background:#468ac9;
+	padding:11px 14px 9px 14px;
+	margin:130px 0 0 0 !important;
+	color:#fff;
+	text-decoration:none;
+	border-radius:3px;
+	font-weight:500;
+	box-shadow: 0 3px 0 #3e72a3;
+}
+
+a:hover {
+	opacity:.9;
+}
+
+article {
+	width:80%;
+	margin:0 auto;
+	font-family:'Helvetica', sans-serif;
+}
+
+article p.welcome {
+	font-family:'Helvetica', sans-serif;
+	font-size:18px;
+	text-align:center;
+	color:#666;
+	font-weight:300 !important;
+	line-height:28px;
+	width:85%;
+	margin: 47px auto 10px auto;
+}
+
+article h3 {
+	display:inline-block;
+	font-size:19px;
+	margin:0;
+	padding;
+}
+
+article div.count {
+	position:relative;
+	top:150px;
+	left:-15px;
+	display:inline-block;
+	float:right;
+	margin:0;
+	padding:0;
+	font-size:20px;
+	opacity:.3;
+}
+
+article textarea.message, textarea.message:focus {
+	margin:10px 0 12px 0;
+	padding:10px;
+	width:100%;
+	height:150px;
+	border-radius:2px;
+	background:#f1f1f1;
+	border: none;
+	resize:none;
+	outline:none;
+	font-weight:300;
+	font-family:'Helvetica', sans-serif;
+	font-size:17px;
+	box-shadow: 0 3px 0 #e6e6e6;
+
+	transition:.5s all;
+	-webkit-transition:.5s all;
+	-moz-transition:.5s all;
+	-o-transition:.5s all;
+
+}
+
+article textarea.message:focus {
+	background:#e9f7e8;
+}
+
+div.warning {
+	width:100%;
+	height:0;
+	margin:0;
+	padding:0 10px 0 12px;
+	color:#de4949;
+	background:#f7e6e6;
+	border-radius:3px;
+	box-shadow:0 3px 0 #e6d1d1;
+	overflow:hidden;
+}
+
+div.mood {
+	margin: 10px 0 15px 0;
+	padding: 2px 10px 10px 2px;
+	width:100%;
+	height:auto;
+	background:#f1f1f1;
+	border-radius:3px;
+	box-shadow: 0 3px 0 #e6e6e6;
+}
+
+div.colour {
+	display:inline-block;
+	width:67px;
+	height:67px;
+	margin:10px 0 0 10px;
+	background:#444;
+	border-radius:33px;
+	border: solid 3px #fff;
+	opacity:.8;
+	cursor:pointer;
+}
+
+div.colour:hover {
+	opacity:.9;
+}
+
+.colour#one {
+	background:#cc77d4;
+}
+
+.colour#two {
+	background:#5a91c4;
+}
+
+.colour#three {
+	background:#5ac478;
+}
+
+.colour#four {
+	background:#e88d37;
+}
+
+.colour#five {
+	background:#de4949;
+}
+
+article button.button#update {
+	width:100% !important;
+	display:block;
+	background:#5bb053;
+	border:none;
+	margin: 25px 0 10px 0;
+	padding:16px 0 14px 0;
+	text-align:center;
+	color:#fff;
+	text-transform:uppercase;
+	text-decoration:none;
+	font-family:'Helvetica', sans-serif;
+	font-size:20px;
+	font-weight:400;
+	border-radius:2px;
+	box-shadow: 0 3px 0 #4b8f44;
+	cursor:pointer;
+}
+
+@media(max-width:768px){
+
+	article textarea.message, article textarea.message:focus {
+		font-size:19px;
+		font-weight:300;
+	}
+
+	div.box {
+		margin: 0 auto 0 auto;
+		width:100%;
+		min-height:100%;
+	}
+
+	article {
+		width:92%;
+	}
+
+	div.mood {
+		padding-left:3px;
+	}
+
+	div.colour {
+		width:50px;
+		height:50px;
+		border-radius:38px;
+	}
+
+}
+
+::selection {
+    background: rgba(0,0,0,0.06);
+	}
+::-moz-selection {
+	background: rgba(0,0,0,0.06);
+	}
+
+</style>
+
+<body>
+
+<div class="box">
+
+	<header>
+
+	<h1>Depiction</h1>
+
+	<script langauge="javascript">
+
+	</script>
+
+	<script type="text/javascript" src="Check.php"></script>
+
+</div>
+
+<!--SCRIPTS-->
+
+<script langauge="javascript">
+
+$("textarea.message").bind('keyup', function(event) {
+    var currentString = $("textarea.message").val()
+    $(".count").html(70 - currentString.length);
+    if (currentString.length > 70 )  {
+       $('.count').css({'color':'#de4949','opacity':'.9'})
+       $('textarea.message').css({'background':'#f7e6e6','box-shadow':'0 3px 0 #e6d1d1'})
+    } else {
+       $('.count').css({'color':'#000','opacity':'.3'})
+       $('textarea.message').css({'background':'#f1f1f1','box-shadow':'0 3px 0 #e6e6e6'})
+       $('div.warning').css({'height':'0',"padding":"0"})
+    }
+});
+
+$('.colour').click(function(){
+    $(this).parent().find('.colour').css('opacity','.5');
+    $(this).css('opacity','1');
+});
+
+	$('button.button#update').click(function(){
+
+		if ( $("textarea.message").val().length >70 ) {
+
+			$('div.warning').css({'height':'auto',"padding":"16px 10px 14px 12px"});
+
+			return false;
+
+		} else {
+
+			var strMessage = $("textarea.message").val()
+			var strColour = "#333"
+			if ($('div.colour#one').css('opacity') === "1") {
+				strColour = "#cc77d4"
+			}
+			else if ($('div.colour#two').css('opacity') === "1") {
+				strColour = "#5a91c4"
+			}
+			else if ($('div.colour#three').css('opacity') === "1") {
+				strColour = "#5ac478"
+			}
+			else if ($('div.colour#four').css('opacity') === "1") {
+				strColour = "#e88d37"
+			}
+			else if ($('div.colour#five').css('opacity') === "1") {
+				strColour = "#de4949"
+			}
+			else {
+				strColour = "#333"
+			}
+
+			$('button.button#update').fadeTo(10,.8).text('Updated!').delay(1500).fadeTo(300,1);
+
+			setTimeout(function() {
+      			$('button.button#update').text('Update');
+			}, 1850);
+
+
+			$.post("Page.php",
+				{
+					'm':strMessage,
+					'c':strColour,
+				});
+
+				return false;
+
+		}
+
+	});
+
+
+</script>
+
+</body>
+
+</html>
