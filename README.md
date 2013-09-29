@@ -9,7 +9,7 @@ It is a web app that allows the user to log in with Twitter and save a status up
 
 ## Libraries
 
-Depiction uses OAuth authentication and the (Twitter API)['http://dev.twitter.com/api'] for managing users. For creating, reading and writing to its SQLite database, it uses (RedBeanPHP)['http://redbeanphp.com/'].
+Depiction uses OAuth authentication and the [Twitter API]('http://dev.twitter.com/api') for managing users. For creating, reading and writing to its SQLite database, it uses [RedBeanPHP]('http://redbeanphp.com/').
 
 ## Licence
 
